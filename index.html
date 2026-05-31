@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Book & Course Writer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 AI Book & Course Writer</h1>
+            <p class="subtitle">Generate books, courses, and magazines using AI (Ollama)</p>
+        </header>
+
+        <div class="api-section">
+            <div class="input-group">
+                <label for="apiUrl">Ollama API URL</label>
+                <input type="url" id="apiUrl" placeholder="https://your-tunnel.trycloudflare.com" value="https://explorer-excellence-usr-manager.trycloudflare.com">
+            </div>
+            <div class="input-group">
+                <label for="apiKey">API Key</label>
+                <input type="password" id="apiKey" placeholder="Enter your API key">
+                <button class="toggle-btn" onclick="toggleKey()">👁</button>
+            </div>
+        </div>
+
+        <div class="main-form">
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="contentType">Content Type</label>
+                    <select id="contentType">
+                        <option value="book">📖 Book</option>
+                        <option value="course">🎓 Online Course</option>
+                        <option value="magazine">📰 Magazine</option>
+                        <option value="ebook">📱 eBook</option>
+                        <option value="workbook">📝 Workbook</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="model">AI Model</label>
+                    <select id="model">
+                        <option value="codellama">CodeLlama</option>
+                        <option value="llama2">Llama 2</option>
+                        <option value="mistral">Mistral</option>
+                        <option value="mixtral">Mixtral</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="title">Title / Topic</label>
+                <input type="text" id="title" placeholder="e.g., The Complete Guide to Python Programming">
+            </div>
+
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="sections">Number of Sections/Chapters</label>
+                    <input type="number" id="sections" min="1" max="50" value="5">
+                </div>
+                <div class="input-group">
+                    <label for="length">Length per Section (words)</label>
+                    <input type="number" id="length" min="100" max="5000" value="500">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="description">Detailed Description</label>
+                <textarea id="description" rows="4" placeholder="Describe exactly what you want the content to cover. Include target audience, tone, key topics, and any specific requirements..."></textarea>
+            </div>
+
+            <div class="input-group">
+                <label for="tone">Writing Tone</label>
+                <select id="tone">
+                    <option value="professional">Professional</option>
+                    <option value="conversational">Conversational</option>
+                    <option value="academic">Academic</option>
+                    <option value="beginner-friendly">Beginner-Friendly</option>
+                    <option value="technical">Technical</option>
+                    <option value="creative">Creative</option>
+                </select>
+            </div>
+
+            <button id="generateBtn" onclick="generateContent()">
+                <span id="btnText">🚀 Generate Content</span>
+                <span id="btnSpinner" class="spinner hidden"></span>
+            </button>
+        </div>
+
+        <div id="outputSection" class="output-section hidden">
+            <div class="output-header">
+                <h2>📄 Generated Content</h2>
+                <div class="output-actions">
+                    <button onclick="copyContent()">📋 Copy All</button>
+                    <button onclick="downloadContent()">💾 Download</button>
+                    <button onclick="clearContent()">🗑 Clear</button>
+                </div>
+            </div>
+            <div id="progressBar" class="progress-bar hidden">
+                <div id="progressFill" class="progress-fill"></div>
+                <span id="progressText">Generating...</span>
+            </div>
+            <div id="outputContent" class="output-content"></div>
+        </div>
+
+        <footer>
+            <p>Powered by <a href="https://ollama.ai" target="_blank">Ollama</a> · Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+            <p class="footer-small">Your API key stays in your browser. Content is generated via your private Ollama tunnel.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
